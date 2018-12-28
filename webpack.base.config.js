@@ -2,6 +2,7 @@ const path = require('path');
 const webpack=require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const autoprefixer=require('autoprefixer')
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const isPro=process.env.NODE_ENV === 'production';
 
 const cssLoader = [
@@ -66,6 +67,7 @@ module.exports = {
     plugins:[
         new webpack.LoaderOptionsPlugin({
             options:{postcss:[autoprefixer()]}
-        })
+        }),
+        new LoadablePlugin()
     ]
 };
